@@ -1,38 +1,133 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #f2e6ff;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  position: relative; /* Needed to position hearts absolutely within this container */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Anum { 
+  display: flex;
+  margin-bottom: 0;
+}
+
+.yes-button, .no-button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease; 
+}
+
+.no-button {
+  transition: transform .7s ease; 
+}
+
+.gif-container {
+  width: 400px; /* Set the width of the GIF box */
+  height: auto; /* Set height to auto to maintain aspect ratio */
+  margin: 0 auto; /* Center the container horizontally */
+  position: relative; /* Position relative to allow for fine-tuning */
+  z-index: 2; /* Ensure it's above other content */
+}
+
+.animated-gif {
+  width: 100%; /* Make the GIF responsive to the container's width */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove any extra space below the image */
+}
+
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f2e6ff; /* Same as the page background */
+  padding: 20px;
+  z-index: 100;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 80%; /* Increase width */
+  height: 80%; /* Increase height */
+  max-width: 600px; /* Optional: limit the maximum width */
+  max-height: 400px; /* Optional: limit the maximum height */
+  overflow: auto; /* Optional: Add scroll for overflow content */
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-gif {
+  max-width: 100%; /* Ensure the GIF fits within the modal */
+  height: auto; /* Maintain aspect ratio */
+  margin: 20px 0; /* Add some margin around the GIF */
+}
+
+body {
+  font-family: 'Dancing Script', cursive;
+}
+
+.Anum, .modal h1 {
+  font-family: 'Dancing Script', cursive;
+}
+
+
+.button-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
   color: white;
+  background-color: #ff4081; /* Vibrant color */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
-.App-link {
-  color: #61dafb;
+/* Hover effect */
+.button-container button:hover {
+  background-color: #f33370; /* Slightly darker shade */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Active (click) effect */
+.button-container button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+
+
+.modal h1 {
+  animation: beatAnimation 2s infinite;
+  font-family: 'Dancing Script', cursive; /* Assuming you want to keep the font */
+  color: #ff4081; /* Optional: Adjust color to fit your theme */
+}
+
+/* Beat animation keyframes */
+@keyframes beatAnimation {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.1); } /* Adjust scale as needed */
+  50% { transform: scale(1); }
+  75% { transform: scale(1.1); }
+}
+
+
